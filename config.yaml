@@ -1,28 +1,25 @@
 envs:
   - name: dev
     region: us-east-1
-    role: arn:aws:iam::314840214426:role/dev-bravo-omni-dev
-    clusterName: omni-dev-useast1-kubemaster
+    role: arn:aws:iam::<AWS account id>:role/<your-role-name>
+    clusterName: <your-cluster-name>
   - name: stg
     region: us-east-1
-    role: arn:aws:iam::211958814005:role/dev-bravo-omni-stg
-    clusterName: omni-stg-useast1-kubemaster
+    role: arn:aws:iam::<AWS account id>:role/<your-role-name>
+    clusterName: <your-cluster-name>
   - name: prod
     region: us-east-1
-    role: arn:aws:iam::950940341780:role/dev-bravo-omni-prod
-    clusterName: omni-prod-useast1-kubemaster
+    role: arn:aws:iam::<AWS account id>:role/<your-role-name>
+    clusterName: <your-cluster-name>
+lambdas:
+  tags: {}
+  exclude:
+    - "^.*-LogRetention.*$"
+  include:
+    - your-lambda-name
 deployments:
   tags:
     app:
-      - pn-job-fulfillment
-      - pn-job-posting
-      - pn-provider-search
-  exclude: [ ]
-  include: [ ]
-lambdas:
-  tags:
-    care:component:
-      - Provider Network - One Time Booking
-  exclude:
-    - "^.*-LogRetention.*$"
-  include: [ ]
+      - your-k8s-service
+  exclude: []
+  include: []

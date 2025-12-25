@@ -1,6 +1,25 @@
+# Drifter
+
 **What**
 
-`drifter` is a utility which helps to track "version drift" of components across different environments. 
+`drifter` is a utility which helps to track "version drift" of components across different environments.
+
+**Languages Available**
+
+- **Go Version**: Original implementation in `main.go` and `internal/` directory
+- **Java Version**: Migrated implementation in `src/main/java/` directory with Maven build
+
+## Quick Start
+
+### For Java Version (Recommended)
+See [README-java.md](README-java.md) for complete Java documentation including:
+- Prerequisites (Java 17+, Maven 3.6+)
+- Build instructions
+- Usage examples
+- Configuration guide
+
+### For Go Version (Legacy)
+Continue reading this document for Go-specific instructions.
 
 **Why**
 
@@ -18,7 +37,7 @@ With k8s services, `drifter` extracts image version from the Deployment spec.
 
 
 If `$GOPATH` is not defined, module is going to be installed into `$HOME/go/bin`
- 
+
 For system-wide installation add `$GOPATH/bin` (if you have it defined) or `$HOME/go/bin` to system `$PATH`.
 
 **Configuration**
@@ -120,5 +139,19 @@ Example JSON output:
     }
   }
 ]
+
+```
+
+How to use
+
+```
+# Build the Java version
+./build.sh
+
+# Run with default config
+java -jar target/drifter-1.0.0.jar
+
+# Run with custom config and JSON output  
+java -jar target/drifter-1.0.0.jar -c config.yaml -f json -v
 
 ```
